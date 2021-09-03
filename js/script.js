@@ -13,18 +13,26 @@
 let numeriRandomici = [];
 let numeriUtente = [];
 var numeriGiusti = [];
-
-setTimeout(timerNumeri, 0);
-setTimeout (myFunction, 5000); 
+ 
 
 while(numeriRandomici.length < 5){
 
-    let singoloNumeroRandomico = randomNumber (1, 100); 
+    let singoloNumeroRandomico = randomNumber (1, 100);
+
+    if (!numeriRandomici.includes(singoloNumeroRandomico) ){
         numeriRandomici.push (singoloNumeroRandomico);
     }
+}
+
+// console.log("prima settimeout")
+setTimeout(timerNumeri, 0);
+// console.log("dopo settimeout")
 
 function timerNumeri() {
+    // console.log("dentro timer numeri")
     alert(numeriRandomici);
+    // console.log("prima di settimeout myfunction")
+    setTimeout(myFunction, 5000);
 }
 
 function randomNumber (min, max) {
@@ -32,69 +40,20 @@ return Math.floor(Math.random() * (min - max + 1) + max);
 }
 
 function myFunction(){
-    for(i = 0; i < 5; i++){
-        let numeriInseriti = prompt("Inserisca, uno alla volta, i numeri che ha appena memorizzato.");
+    // console.log("dentro myfunction")
+    for(let i = 0; i < 5; i++){
+        let numeriInseriti = parseInt(prompt("Inserisca, uno alla volta, i numeri che ha appena memorizzato.") );
         numeriUtente.push(numeriInseriti)
-        for (j = 0; j > numeriUtente.length; j++){
-            if ( numeriRandomici.includes(numeriInseriti) ){
-                numeriGiusti.push(numeriInseriti)
-            }
+    }
+    for (let j = 0; j < numeriUtente.length; j++){
+        if (numeriRandomici.includes(numeriUtente[j]) && !numeriGiusti.includes(numeriUtente[j]) ){
+            numeriGiusti.push(numeriUtente[j])
         }
     }
-    
+
     console.log(numeriRandomici)
     console.log(numeriUtente)
     console.log(numeriGiusti)
+    console.log(numeriGiusti.length)
+    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// let numeriRandomici = [];
-// // let numeriUtente = [];
-// // let timer = 5;
-
-
-// // while (timer < 10 || timer < 2) {
-// //     timer = alert("1, 2, 3, 4, 5");
-// // }
-
-// // setTimeout(function(){
-// //     for(i = 0; i < 5; i++){
-// //         let numeriInseriti = prompt("Inserisca, uno alla volta, i numeri che ha appena memorizzato.");
-// //         numeriUtente.push(numeriInseriti[i])
-// //     }console.log (timer)
-// // }, timer * 10000); 
-
-
-// // console.log (numeriUtente)
